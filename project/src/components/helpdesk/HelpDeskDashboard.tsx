@@ -19,7 +19,7 @@ const HelpDeskDashboard: React.FC = () => {
 
   const stats = [
     {
-      name: 'Open Tickets',
+      name: 'פניות פתוחות',
       value: '12',
       change: '+3',
       changeType: 'neutral',
@@ -27,7 +27,7 @@ const HelpDeskDashboard: React.FC = () => {
       color: 'red'
     },
     {
-      name: 'Locked Files',
+      name: 'קבצים נעולים',
       value: '8',
       change: '-2',
       changeType: 'positive',
@@ -35,7 +35,7 @@ const HelpDeskDashboard: React.FC = () => {
       color: 'yellow'
     },
     {
-      name: 'Emergency Access',
+      name: 'גישה חירום',
       value: '3',
       change: '+1',
       changeType: 'neutral',
@@ -43,7 +43,7 @@ const HelpDeskDashboard: React.FC = () => {
       color: 'orange'
     },
     {
-      name: 'Resolved Today',
+      name: 'נפתרו היום',
       value: '24',
       change: '+8',
       changeType: 'positive',
@@ -55,72 +55,72 @@ const HelpDeskDashboard: React.FC = () => {
   const urgentIssues = [
     {
       id: 1,
-      type: 'File Locked',
-      title: 'Budget file locked for 2 days',
-      user: 'Sarah Wilson',
+      type: 'קובץ נעול',
+      title: 'קובץ תקציב נעול כבר יומיים',
+      user: 'שרה וילסון',
       file: '/finance/budget-2024.xlsx',
-      priority: 'urgent',
-      time: '2 hours ago'
+      priority: 'דחוף',
+      time: 'לפני שעתיים'
     },
     {
       id: 2,
-      type: 'Access Denied',
-      title: 'Cannot access project files',
-      user: 'Mike Johnson',
+      type: 'גישה נדחתה',
+      title: 'לא ניתן לגשת לקבצי פרויקט',
+      user: 'מיכאל יוחנן',
       file: '/projects/alpha/',
-      priority: 'high',
-      time: '45 minutes ago'
+      priority: 'גבוה',
+      time: 'לפני 45 דקות'
     },
     {
       id: 3,
-      type: 'File Missing',
-      title: 'Contract file not found',
-      user: 'Lisa Chen',
+      type: 'קובץ חסר',
+      title: 'קובץ חוזה לא נמצא',
+      user: 'ליסה חן',
       file: '/contracts/2024-001.pdf',
-      priority: 'high',
-      time: '1 hour ago'
+      priority: 'גבוה',
+      time: 'לפני שעה'
     }
   ];
 
   const recentActivity = [
     {
       id: 1,
-      action: 'File unlocked',
+      action: 'קובץ שוחרר',
       file: 'quarterly-report.xlsx',
-      user: 'David Tech',
-      time: '5 minutes ago',
+      user: 'דוד טק',
+      time: 'לפני 5 דקות',
       status: 'success'
     },
     {
       id: 2,
-      action: 'Emergency access granted',
+      action: 'ניתנה גישת חירום',
       file: 'client-presentation.pptx',
-      user: 'Sarah Support',
-      time: '15 minutes ago',
+      user: 'שרה תמיכה',
+      time: 'לפני 15 דקות',
       status: 'warning'
     },
     {
       id: 3,
-      action: 'File restored',
+      action: 'קובץ שוחזר',
       file: 'backup-data.xlsx',
-      user: 'Mike Helper',
-      time: '30 minutes ago',
+      user: 'מיכאל עוזר',
+      time: 'לפני 30 דקות',
       status: 'success'
     }
   ];
 
   const quickActions = [
-    { name: 'Search Files', icon: Search, color: 'blue', action: 'investigation' },
-    { name: 'Unlock Files', icon: Lock, color: 'yellow', action: 'locks' },
-    { name: 'Emergency Access', icon: Zap, color: 'red', action: 'emergency' },
-    { name: 'File Recovery', icon: FileText, color: 'purple', action: 'recovery' }
+    { name: 'חיפוש קבצים', icon: Search, color: 'blue', action: 'investigation' },
+    { name: 'שחרור קבצים', icon: Lock, color: 'yellow', action: 'locks' },
+    { name: 'גישת חירום', icon: Zap, color: 'red', action: 'emergency' },
+    { name: 'שחזור קבצים', icon: FileText, color: 'purple', action: 'recovery' }
   ];
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'urgent': return 'text-red-600 bg-red-100';
-      case 'high': return 'text-orange-600 bg-orange-100';
-      case 'medium': return 'text-yellow-600 bg-yellow-100';
+      case 'דחוף': return 'text-red-600 bg-red-100';
+      case 'גבוה': return 'text-orange-600 bg-orange-100';
+      case 'בינוני': return 'text-yellow-600 bg-yellow-100';
       default: return 'text-green-600 bg-green-100';
     }
   };
@@ -135,24 +135,24 @@ const HelpDeskDashboard: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" dir="rtl">
       {/* Quick Search Bar */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">Help Desk Control Center</h2>
-            <p className="text-sm text-gray-500 mt-1">Resolve file access issues and support users</p>
+            <h2 className="text-xl font-semibold text-gray-900">מרכז בקרת תמיכה</h2>
+            <p className="text-sm text-gray-500 mt-1">פתרון בעיות גישה לקבצים ותמיכה במשתמשים</p>
           </div>
           
-          <div className="flex-1 max-w-md lg:ml-8">
+          <div className="flex-1 max-w-md lg:mr-8">
             <div className="relative">
-              <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+              <Search className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search by employee name or file name..."
+                placeholder="חיפוש לפי שם עובד או שם קובץ..."
                 value={quickSearch}
                 onChange={(e) => setQuickSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full pr-10 pl-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-right"
               />
             </div>
           </div>
@@ -166,22 +166,22 @@ const HelpDeskDashboard: React.FC = () => {
           return (
             <div key={stat.name} className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-2">{stat.value}</p>
-                </div>
                 <div className="flex-shrink-0">
                   <Icon className={`h-8 w-8 text-${stat.color}-600`} />
                 </div>
+                <div className="text-right">
+                  <p className="text-sm font-medium text-gray-600">{stat.name}</p>
+                  <p className="text-3xl font-bold text-gray-900 mt-2">{stat.value}</p>
+                </div>
               </div>
-              <div className="mt-4 flex items-center">
+              <div className="mt-4 flex items-center justify-end">
+                <span className="text-sm text-gray-500 mr-1">מאתמול</span>
                 <span className={`text-sm font-medium ${
                   stat.changeType === 'positive' ? 'text-green-600' :
                   stat.changeType === 'negative' ? 'text-red-600' : 'text-gray-600'
                 }`}>
                   {stat.change}
                 </span>
-                <span className="text-sm text-gray-500 ml-1">from yesterday</span>
               </div>
             </div>
           );
@@ -190,7 +190,7 @@ const HelpDeskDashboard: React.FC = () => {
 
       {/* Quick Actions */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
+        <h3 className="text-lg font-medium text-gray-900 mb-4">פעולות מהירות</h3>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {quickActions.map((action) => {
             const Icon = action.icon;
@@ -212,8 +212,8 @@ const HelpDeskDashboard: React.FC = () => {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="px-6 py-4 border-b border-gray-200">
             <h3 className="text-lg font-medium text-gray-900 flex items-center">
-              <AlertTriangle className="h-5 w-5 mr-2 text-red-600" />
-              Urgent Issues
+              <AlertTriangle className="h-5 w-5 ml-2 text-red-600" />
+              בעיות דחופות
             </h3>
           </div>
           <div className="p-6">
@@ -221,22 +221,22 @@ const HelpDeskDashboard: React.FC = () => {
               {urgentIssues.map((issue) => (
                 <div key={issue.id} className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
                   <div className="flex items-center justify-between mb-2">
-                    <h4 className="text-sm font-medium text-gray-900">{issue.title}</h4>
                     <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getPriorityColor(issue.priority)}`}>
                       {issue.priority}
                     </span>
+                    <h4 className="text-sm font-medium text-gray-900 text-right">{issue.title}</h4>
                   </div>
-                  <p className="text-sm text-gray-600 mb-2">{issue.file}</p>
+                  <p className="text-sm text-gray-600 mb-2 text-right">{issue.file}</p>
                   <div className="flex items-center justify-between text-xs text-gray-500">
-                    <span>Reported by {issue.user}</span>
                     <span>{issue.time}</span>
+                    <span>דווח על ידי {issue.user}</span>
                   </div>
-                  <div className="mt-3 flex space-x-2">
-                    <button className="text-xs bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700 transition-colors">
-                      Investigate
-                    </button>
+                  <div className="mt-3 flex rtl-space-x-2">
                     <button className="text-xs bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 transition-colors">
-                      Assign
+                      הקצה
+                    </button>
+                    <button className="text-xs bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700 transition-colors">
+                      חקור
                     </button>
                   </div>
                 </div>
@@ -249,25 +249,25 @@ const HelpDeskDashboard: React.FC = () => {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200">
           <div className="px-6 py-4 border-b border-gray-200">
             <h3 className="text-lg font-medium text-gray-900 flex items-center">
-              <Activity className="h-5 w-5 mr-2 text-green-600" />
-              Recent Activity
+              <Activity className="h-5 w-5 ml-2 text-green-600" />
+              פעילות אחרונה
             </h3>
           </div>
           <div className="p-6">
             <div className="space-y-4">
               {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-start space-x-3">
-                  <div className={`flex-shrink-0 w-2 h-2 rounded-full mt-2 ${getStatusColor(activity.status)}`} />
-                  <div className="flex-1 min-w-0">
+                <div key={activity.id} className="flex items-start rtl-space-x-3">
+                  <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(activity.status)}`}>
+                    {activity.status === 'success' ? 'הצליח' : activity.status === 'warning' ? 'אזהרה' : 'שגיאה'}
+                  </span>
+                  <div className="flex-1 min-w-0 text-right">
                     <p className="text-sm text-gray-900 font-medium">{activity.action}</p>
                     <p className="text-sm text-gray-600">{activity.file}</p>
                     <p className="text-xs text-gray-500 mt-1">
-                      by {activity.user} • {activity.time}
+                      {activity.time} • על ידי {activity.user}
                     </p>
                   </div>
-                  <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(activity.status)}`}>
-                    {activity.status}
-                  </span>
+                  <div className={`flex-shrink-0 w-2 h-2 rounded-full mt-2 ${getStatusColor(activity.status)}`} />
                 </div>
               ))}
             </div>
@@ -279,23 +279,23 @@ const HelpDeskDashboard: React.FC = () => {
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">
         <div className="px-6 py-4 border-b border-gray-200">
           <h3 className="text-lg font-medium text-gray-900 flex items-center">
-            <Shield className="h-5 w-5 mr-2 text-green-600" />
-            System Status
+            <Shield className="h-5 w-5 ml-2 text-green-600" />
+            סטטוס מערכת
           </h3>
         </div>
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600">98.7%</div>
-              <div className="text-sm text-gray-500">System Uptime</div>
+              <div className="text-sm text-gray-500">זמינות מערכת</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-600">1.2s</div>
-              <div className="text-sm text-gray-500">Avg Response Time</div>
+              <div className="text-sm text-gray-500">זמן תגובה ממוצע</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600">156</div>
-              <div className="text-sm text-gray-500">Active Users</div>
+              <div className="text-sm text-gray-500">משתמשים פעילים</div>
             </div>
           </div>
         </div>
